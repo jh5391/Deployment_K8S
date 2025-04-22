@@ -1,0 +1,18 @@
+# Production environment specific values
+# These values will override the defaults in the base and app charts
+
+replicaCount: 3
+
+image:
+  tag: "stable-1.2.3"
+
+service:
+  type: ClusterIP # Keep default ClusterIP for prod, assuming ingress handles external access
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi 

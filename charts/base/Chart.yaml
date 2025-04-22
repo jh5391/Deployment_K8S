@@ -1,0 +1,6 @@
+apiVersion: v2
+name: base
+description: A base Helm chart for Kubernetes applications
+type: library
+version: 0.1.0
+appVersion: "1.0.0" 

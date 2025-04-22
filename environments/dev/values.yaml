@@ -1,0 +1,10 @@
+# Development environment specific values
+# These values will override the defaults in the base and app charts
+
+replicaCount: 1
+
+image:
+  tag: "dev-latest"
+
+service:
+  type: NodePort # Expose service via NodePort for local access in dev 

@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: environment-apps
+spec:
+  generators:
+  - list:
+      elements:
+        - environment: dev
+          apps: ["app1", "app2"]
+        - environment: prod
+          apps: ["app1"]
+  template:
+    metadata:
+      name: '{{environment}}-{{apps}}'
+    spec:
+      project: default
+      source:
+        repoURL: YOUR_GITHUB_REPO_URL # Replace with your Git repository URL
+        targetRevision: HEAD
+        path: 'charts/{{apps}}'
+        helm:
+          valueFiles:
+          - /values.yaml # Base values from the app chart itself
+          - /environments/{{environment}}/values.yaml # Environment specific values
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{environment}}-{{apps}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true 

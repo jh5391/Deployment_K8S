@@ -1,0 +1,21 @@
+# Helm dependency chart archives
+charts/**/charts/
+charts/**/tmp/
+charts/**/Chart.lock
+
+# Helm release history
+*.tgz
+
+# Environment specific files
+environments/**/secrets.yaml
+
+# Kubernetes secrets (if stored locally, though not recommended)
+secrets.yaml
+
+# Local environment files
+*.local
+.DS_Store
+
+# IDE files
+.idea/
+.vscode/ 

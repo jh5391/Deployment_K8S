@@ -1,0 +1,6 @@
+# Override base chart values for app1
+image:
+  repository: httpd
+  tag: "latest"
+
+# App1 specific values can be added here 

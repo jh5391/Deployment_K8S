@@ -1,0 +1,4 @@
+# Override base chart values for app2
+replicaCount: 2
+
+# App2 specific values can be added here 

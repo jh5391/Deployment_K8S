@@ -1,0 +1,10 @@
+apiVersion: v2
+name: app2
+description: A Helm chart for app2
+version: 0.1.0
+appVersion: "1.0.0"
+
+dependencies:
+  - name: base
+    version: "0.1.0"
+    repository: "file://../base" 

@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: applicationset-bootstrap
+  namespace: argocd # Assuming ArgoCD is installed in the 'argocd' namespace
+spec:
+  project: default
+  source:
+    repoURL: YOUR_GITHUB_REPO_URL # Replace with your Git repository URL
+    targetRevision: HEAD
+    path: argocd # Directory containing the ApplicationSet definition
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd # Deploy the ApplicationSet resource itself into the argocd namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true 
